@@ -59,6 +59,7 @@ namespace KMA.ProgrammingInCSharp24
             if (age < 0 || age > 135)
             {
                 MessageBox.Show("Error! Please, enter your reall birth date!");
+                LoaderIcon.Visibility = Visibility.Collapsed;
                 return;
             }
 
