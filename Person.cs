@@ -8,12 +8,23 @@ namespace KMA.ProgrammingInCSharp24
 {
     internal class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
-        public DateTime BirthDate { get; set; }
+        //Зробив доступи private до власних методів цього класу 
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string EmailAddress { get; private set; }
+        public DateTime BirthDate { get; private set; }
 
-        public bool IsAdult
+
+        // Замінив 3 конструктори одним, але для 3 випадків
+        private Person(string firstName, string lastName, string emailAddress = "", DateTime? birthDate = null)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            EmailAddress = emailAddress ?? string.Empty;
+            BirthDate = birthDate ?? default;
+        }
+
+        private bool IsAdult
         {
             get
             {
@@ -22,7 +33,7 @@ namespace KMA.ProgrammingInCSharp24
             }
         }
 
-        public string WesternSign
+        private string WesternSign
         {
             get
             {
@@ -30,7 +41,7 @@ namespace KMA.ProgrammingInCSharp24
             }
         }
 
-        public string ChineseSign
+        private string ChineseSign
         {
             get
             {
@@ -38,36 +49,12 @@ namespace KMA.ProgrammingInCSharp24
             }
         }
 
-        public bool IsBirthday
+        private bool IsBirthday
         {
             get
             {
                 return IsBirthDay(BirthDate);
             }
-        }
-
-        public Person(string firstName, string lastName, string emailAddress, DateTime birthDate)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            EmailAddress = emailAddress;
-            BirthDate = birthDate;
-        }
-
-        public Person(string firstName, string lastName, string emailAddress)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            EmailAddress = emailAddress;
-            BirthDate = default; 
-        }
-
-        public Person(string firstName, string lastName, DateTime birthDate)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            EmailAddress = string.Empty; 
-            BirthDate = birthDate;
         }
 
         public static int CalculateAge(DateTime birthDate)
