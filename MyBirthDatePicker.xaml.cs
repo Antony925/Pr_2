@@ -92,7 +92,7 @@ namespace KMA.ProgrammingInCSharp24
                 _birthDate.Text = $"Birth Date: {selectedDate.ToString()}";
                 if (await Task.Run(() => Person.IsBirthDay(selectedDate)) == true)
                 {
-                    _IsBirthDay.Text = "Today is your birthday";
+                    _IsBirthDay.Text = "Today is your birthday!";
                 }
                 else
                 {

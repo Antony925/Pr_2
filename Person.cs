@@ -8,14 +8,14 @@ namespace KMA.ProgrammingInCSharp24
 {
     internal class Person
     {
-        //Зробив доступи private до власних методів цього класу 
+        //Зробив доступи private до власних методів цього класу
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string EmailAddress { get; private set; }
         public DateTime BirthDate { get; private set; }
 
 
-        // Замінив 3 конструктори одним, але для 3 випадків
+        //Замінив 3 конструктори одним, але для 3 випадків
         private Person(string firstName, string lastName, string emailAddress = "", DateTime? birthDate = null)
         {
             FirstName = firstName;
