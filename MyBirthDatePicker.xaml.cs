@@ -50,6 +50,7 @@ namespace KMA.ProgrammingInCSharp24
                 ProceedButton.IsEnabled = false;
             }
         }
+
         public async void Button_Click(object sender, RoutedEventArgs e)
         {
             try
