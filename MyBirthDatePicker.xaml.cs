@@ -37,7 +37,6 @@ namespace KMA.ProgrammingInCSharp24
             email = EmailTextBox.Text;
             DateTime birthDate = BirthDatePicker.SelectedDate.GetValueOrDefault();
 
-            // Перевіряємо, чи всі поля введення не пусті
             if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text) &&
                 !string.IsNullOrWhiteSpace(LastNameTextBox.Text) &&
                 !string.IsNullOrWhiteSpace(EmailTextBox.Text) &&

@@ -5,5 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KMA.ProgrammingInCSharp24.MorgunLab01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="502">
+        Title="MainWindow" Height="400" Width="802">
+    <Grid>
+        <DataGrid x:Name="userGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding EmailAddress}" />
+                <DataGridTextColumn Header="Western" Binding="{Binding WesternSign}" />
+                <DataGridTextColumn Header="China" Binding="{Binding ChineseSign}" />
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
+                <DataGridTextColumn Header="IsBirthDay" Binding="{Binding IsBirthday}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,98,0,10">
+            <TextBox x:Name="FirstNameTextBox" Height ="30"  Width="100" Margin="400, 230, 5, 5" Tag="First Name"/>
+            <TextBox x:Name="LastNameTextBox" Height ="30" Width="100" Margin="5, 230, 5, 5" Tag="Last Name"/>
+            <TextBox x:Name="EmailTextBox" Height ="30" Width="200" Margin="5, 230, 5, 5" Tag="Email"/>
+            <DatePicker x:Name="BirthDatePicker" Height ="30" Width="120" Margin="5, 230, 5, 5"/>
+            <Button Content="Add" Height ="30" Width="40" Click="AddButton_Click" Margin="5, 230, 5, 5"/>
+            <Button Content="Deelet" Height ="30" Width="70" Click="RemoveButton_Click" Margin="5, 230, 5, 5"/>
+            <Button Content="Save" Height ="30" Width="50" Click="SaveButton_Click" Margin="5, 230, 5, 5"/>
+        </StackPanel>
+    </Grid>
+    
+    
+    
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Border x:Name="Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5"/>
+                            <TextBlock x:Name="PlaceholderText" 
+                                   Text="{TemplateBinding Tag}"
+                                   Margin="5,0"
+                                   Foreground="Gray"
+                                   Visibility="Collapsed"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}}" Value="">
+                                <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 </Window>

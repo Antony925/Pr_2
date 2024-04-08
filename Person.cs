@@ -8,20 +8,28 @@ namespace KMA.ProgrammingInCSharp24
 {
     internal class Person
     {
-        //Зробив доступи private до власних методів цього класу
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string EmailAddress { get; private set; }
         public DateTime BirthDate { get; private set; }
+        public int Age { get; private set; }
+        public string WesternSign { get; private set; }
+        public string ChineseSign { get; private set; }
+        public bool IsBirthday { get; private set; }
 
 
         //Замінив 3 конструктори одним, але для 3 випадків
-        private Person(string firstName, string lastName, string emailAddress = "", DateTime? birthDate = null)
+        public Person(string firstName, string lastName, string emailAddress, DateTime birthDate, string westernSign, string chineseSign, int age, bool isBirthday)
         {
             FirstName = firstName;
             LastName = lastName;
             EmailAddress = emailAddress ?? string.Empty;
-            BirthDate = birthDate ?? default;
+            BirthDate = birthDate;
+
+            Age = CalculateAge(BirthDate);
+            WesternSign = CalculateWesternZodiac(BirthDate);
+            ChineseSign = CalculateChinaZodiac(BirthDate);
+            IsBirthday = IsBirthDay(BirthDate);
         }
 
         private bool IsAdult
@@ -30,30 +38,6 @@ namespace KMA.ProgrammingInCSharp24
             {
                 int age = CalculateAge(BirthDate);
                 return age >= 18;
-            }
-        }
-
-        private string WesternSign
-        {
-            get
-            {
-                return CalculateWesternZodiac(BirthDate);
-            }
-        }
-
-        private string ChineseSign
-        {
-            get
-            {
-                return CalculateChinaZodiac(BirthDate);
-            }
-        }
-
-        private bool IsBirthday
-        {
-            get
-            {
-                return IsBirthDay(BirthDate);
             }
         }
 
